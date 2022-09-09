@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-function Quotes({ isDarkmode }) {
+function Quotes() {
   const [quotes, setquotes] = useState("");
-  const [color, setColor] = useState(0);
+  const [color, setColor] = useState();
 
   let colors = [
     "#52e213",
@@ -22,20 +22,20 @@ function Quotes({ isDarkmode }) {
   useEffect(() => {
     getQuote();
   }, []);
-  const getQuote = () => {
+  function getQuote() {
     fetch("https://type.fit/api/quotes")
       .then((res) => res.json())
       .then((data) => {
         setquotes(data[Math.ceil(Math.random() * data.length - 1)]);
         setColor(colors[Math.ceil(Math.random() * colors.length - 1)]);
       });
-  };
+  }
 
   return (
     <div
       className="App"
       style={{
-        color: color,
+        color: colors,
       }}
     >
       <div className="quote">

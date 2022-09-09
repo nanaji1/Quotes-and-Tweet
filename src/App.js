@@ -21,7 +21,7 @@ function App() {
         </label>
       </div>
       <div>
-        <Quotes isDarkmode={darkMode} />
+        <Quotes />
       </div>
     </div>
   );
